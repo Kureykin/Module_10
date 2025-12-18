@@ -4,8 +4,14 @@ package org.example;
 public class Main {
     static void main() {
 
-        WordCounter reader =new WordCounter("src/main/resources/file.txt");
+        new PhoneNumberReader().readPhoneNumber("src/main/resources/phonenumbers.txt");
+        System.out.println("----");
 
-        reader.count();
+        new ToJsonConverter("src/main/resources/users.txt").parceToJSON();
+        System.out.println("----");
+
+        new WordCounter("src/main/resources/words.txt").count();
+        System.out.println("----");
+
     }
 }
