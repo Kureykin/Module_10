@@ -13,14 +13,16 @@ public class ToJsonConverter {
     private File file;
 
     public  ToJsonConverter(File filePath){
+
         this.file = filePath;
     }
     public  ToJsonConverter(String filePath){
+
         this.file = new File(filePath);
     }
 
-    private List<String> readUser()
-    {
+    private List<String> readUser() {
+
         List<String> buffer =null;
 
         try( FileReader reader = new FileReader(file)){
@@ -44,6 +46,7 @@ public class ToJsonConverter {
             int nameLength = 0;
 
             while (userData.charAt(nameLength) != ' '){
+
                 nameLength++;
             }
 
@@ -65,9 +68,10 @@ public class ToJsonConverter {
             String json = gson.toJson(users);
 
             try (FileWriter writer = new FileWriter("src/main/resources/user.json")){
-                writer.write(json);
 
-            }catch (IOException ex){
+                writer.write(json);
+            }
+            catch (IOException ex){
                 System.out.println(ex.getMessage());
             }
 
