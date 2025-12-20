@@ -12,11 +12,11 @@ public class ToJsonConverter {
 
     private File file;
 
-    public  ToJsonConverter(File filePath){
+    public  ToJsonConverter(File filePath) {
 
         this.file = filePath;
     }
-    public  ToJsonConverter(String filePath){
+    public  ToJsonConverter(String filePath) {
 
         this.file = new File(filePath);
     }
@@ -25,17 +25,17 @@ public class ToJsonConverter {
 
         List<String> buffer =null;
 
-        try( FileReader reader = new FileReader(file)){
+        try( FileReader reader = new FileReader(file)) {
             buffer = reader.readAllLines();
         }
-        catch(IOException ex){
+        catch(IOException ex) {
             System.out.println(ex.getMessage());
         }
 
         return buffer;
     }
 
-    private ArrayList<User> setUsers(){
+    private ArrayList<User> setUsers() {
 
         List<String> usersList = readUser();
         ArrayList<User> users = new ArrayList<>();
@@ -45,7 +45,7 @@ public class ToJsonConverter {
             String userData = usersList.get(i);
             int nameLength = 0;
 
-            while (userData.charAt(nameLength) != ' '){
+            while (userData.charAt(nameLength) != ' ') {
 
                 nameLength++;
             }
@@ -60,22 +60,20 @@ public class ToJsonConverter {
         return users;
     }
 
-    public void parceToJSON(){
+    public void parceToJSON() {
 
         ArrayList<User> users = setUsers();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
             String json = gson.toJson(users);
 
-            try (FileWriter writer = new FileWriter("src/main/resources/user.json")){
+            try (FileWriter writer = new FileWriter("src/main/resources/user.json")) {
 
                 writer.write(json);
             }
-            catch (IOException ex){
+            catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-
-
 
     }
 }

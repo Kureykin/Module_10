@@ -16,7 +16,7 @@ public class PhoneNumberReader {
 
             List<String> buffer;
 
-            if ((buffer = reader.readAllLines()) != null){
+            if ((buffer = reader.readAllLines()) != null) {
 
                 for (int i = 0; i < buffer.size(); i++) {
                     if (isTruePhonNumber(buffer.get(i))) {
@@ -25,7 +25,7 @@ public class PhoneNumberReader {
                 }
             }
         }
-        catch (IOException e){
+        catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
@@ -33,11 +33,11 @@ public class PhoneNumberReader {
 
     private boolean isTruePhonNumber(String phoneNumber) {
 
-        if(phoneNumber.length() == 12){
+        if(phoneNumber.length() == 12) {
 
             return phoneNumber.charAt(3) == '-' && phoneNumber.charAt(7) == '-';
         }
-        if(phoneNumber.length() == 14){
+        if(phoneNumber.length() == 14) {
 
             return phoneNumber.charAt(0) == '(' && phoneNumber.substring(4,6).equals(") ") && phoneNumber.charAt(9) == '-';
         }
